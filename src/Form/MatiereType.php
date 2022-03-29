@@ -20,6 +20,13 @@ class MatiereType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Matiere::class,
-        ]);
+        ])
+        ->add('submit', SubmitType::class, [
+            'label' => 'Envoyer'
+        ])
+
+    
+
+        ;
     }
 }

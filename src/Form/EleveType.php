@@ -12,12 +12,24 @@ class EleveType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('nom')
-            ->add('prenom')
-            ->add('date_de_naissance')
-            ->add('classe')
-        ;
-    }
+
+        ->add('nom', TextType::class, [
+            'required' => true,
+        ])
+        ->add('prenom', TextType::class, [
+            'required' => true,
+        ])
+        ->add('date_de_naissance', DateType::class, [
+            'required' => true,
+        ])
+        ->add('classe', EntityType::class, [
+            'class' => Classe::class,
+            'choice_label' => 'nom',
+            'required' => true,
+        ])
+        ->add('submit', SubmitType::class, ['label' => 'Ajouter']);
+}
+        
 
     public function configureOptions(OptionsResolver $resolver): void
     {
